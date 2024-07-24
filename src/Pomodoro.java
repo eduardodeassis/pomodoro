@@ -12,12 +12,15 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import java.io.File;
+
 
 public class Pomodoro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtTempo;
 	private Point initialClick;
+	private File imgLogo = new File("src/img/tomato32.png");
 
 	/**
 	 * Launch the application.
@@ -77,7 +80,7 @@ public class Pomodoro extends JFrame {
 	        }
 	    });
 		
-		ImageIcon imagem = new ImageIcon("E:\\Eduardo\\Desenvolvimento\\Java\\eclipse-workspace\\Pomodoro\\src\\img\\tomato32.png");
+	    ImageIcon imagem = new ImageIcon(imgLogo.getAbsolutePath());
 		JLabel lblImagem = new JLabel(imagem);
 		getContentPane().add(lblImagem);					
 				
