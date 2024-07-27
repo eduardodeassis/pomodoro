@@ -92,25 +92,33 @@ public class Pomodoro extends JFrame {
 			
 		JButton btnIniciar = new JButton("Iniciar");
 		btnIniciar.setBackground(new Color(255, 198, 198));
+		btnIniciar.setSize(150, 20);
 				
 		btnIniciar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {	
-				try {
-					int tMinuto = Integer.parseInt(txtTempo.getText().substring(0, txtTempo.getText().indexOf(":")));
-					System.out.printf("bt min: %d%n", tMinuto);
-					int tSegundo = Integer.parseInt(txtTempo.getText().substring(txtTempo.getText().indexOf(":")+1, txtTempo.getText().length()));
-					System.out.printf("bt seg: %d%n", tSegundo);
-					if ((tSegundo < 0) || (tSegundo > 59)) {						
-						JOptionPane.showMessageDialog(null, "O valor informado para o segundo deve ser um valor entre 0 e 59.");
-			            System.out.println("Erro: O valor informado para o segundo deve ser um valor entre 0 e 59.");
-			            return;			            
-					}					
-				} catch (Exception exc) {
-					JOptionPane.showMessageDialog(null, "Por favor verique o tempo informado.");
-		            System.out.println("Erro: " + exc.getMessage());
-		            return;
-		        }	
-				tmp.iniciar(txtTempo);
+			public void actionPerformed(ActionEvent e) {
+				if (btnIniciar.getText() == "Iniciar") {
+					try {
+						int tMinuto = Integer.parseInt(txtTempo.getText().substring(0, txtTempo.getText().indexOf(":")));
+						System.out.printf("bt min: %d%n", tMinuto);
+						int tSegundo = Integer.parseInt(txtTempo.getText().substring(txtTempo.getText().indexOf(":")+1, txtTempo.getText().length()));
+						System.out.printf("bt seg: %d%n", tSegundo);
+						if ((tSegundo < 0) || (tSegundo > 59)) {
+							JOptionPane.showMessageDialog(null, "O valor informado para o segundo deve ser um valor entre 0 e 59.");
+				            System.out.println("Erro: O valor informado para o segundo deve ser um valor entre 0 e 59.");
+				            return;
+						}
+					} catch (Exception exc) {
+						JOptionPane.showMessageDialog(null, "Por favor verique o tempo informado.");
+			            System.out.println("Erro: " + exc.getMessage());
+			            return;
+					}
+					tmp.iniciar(txtTempo);
+					btnIniciar.setText("Pausar");
+				}
+				else {
+					tmp.pausar();
+					btnIniciar.setText("Iniciar");
+				}
 			}
 		});
 		/*
