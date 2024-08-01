@@ -1,4 +1,5 @@
 import javax.swing.JTextField;
+import javax.swing.JButton;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
@@ -83,7 +84,7 @@ public class Temporizador {
 		return txtFormatado();
 	}
 	
-	public void iniciar(JTextField txt) {
+	public void iniciar(JTextField txt, JButton btn, String btnTextZerar) {
 		Iniciado = 1;
 		System.out.println("iniciado");
 		
@@ -107,6 +108,7 @@ public class Temporizador {
 					decrementa(0, 1);
 					if (Minuto + Segundo == 0) {
 						Iniciado = 0;
+						btn.setText(btnTextZerar);
 						beep();
 					}
 					System.out.println(txtFormatado());
