@@ -48,9 +48,7 @@ public class Pomodoro extends JFrame {
 		getContentPane().setForeground(new Color(0, 0, 0));
 		setForeground(new Color(255, 198, 198));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 380, 45);
-		FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER, 5, 5);
-		getContentPane().setLayout(flowLayout);
+		setBounds(100, 100, 419, 40);
 		setUndecorated(true);
 		
 		// Adiciona o MouseListener e MouseMotionListener
@@ -81,18 +79,21 @@ public class Pomodoro extends JFrame {
 	    });
 		
 	    ImageIcon imagem = new ImageIcon(imgLogo.getAbsolutePath());
+		getContentPane().setLayout(null);
 		JLabel lblImagem = new JLabel(imagem);
+		lblImagem.setBounds(4, 4, 32, 32);
 		getContentPane().add(lblImagem);					
 				
 		txtTempo = new JTextField();
+		txtTempo.setBounds(40, 10, 90, 20);
 		txtTempo.setText("30:00");
 		getContentPane().add(txtTempo);
 		txtTempo.setColumns(10);
 		Temporizador tmp = new Temporizador();
 			
 		JButton btnIniciar = new JButton("Iniciar");
+		btnIniciar.setBounds(135, 8, 75, 23);
 		btnIniciar.setBackground(new Color(255, 198, 198));
-		btnIniciar.setSize(150, 20);
 				
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -112,7 +113,7 @@ public class Pomodoro extends JFrame {
 			            System.out.println("Erro: " + exc.getMessage());
 			            return;
 					}
-					tmp.iniciar(txtTempo);
+					tmp.iniciar(txtTempo, btnIniciar, "Iniciar");
 					btnIniciar.setText("Pausar");
 				}
 				else {
@@ -135,16 +136,20 @@ public class Pomodoro extends JFrame {
 		*/
 		getContentPane().add(btnIniciar);
 		
-		JButton btnPausar = new JButton("Pausar");
-		btnPausar.setBackground(new Color(255, 198, 198));
-		btnPausar.addActionListener(new ActionListener() {
+		JButton btnConfiguracoes = new JButton("Configurações");
+		btnConfiguracoes.setBounds(215, 8, 120, 23);
+		btnConfiguracoes.setBackground(new Color(255, 198, 198));
+		btnConfiguracoes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tmp.pausar();
+				Configuracoes frmConfiguracoes = new Configuracoes();
+				//frmConfiguracoes.pack();
+				frmConfiguracoes.setVisible(true);
 			}
 		});
-		getContentPane().add(btnPausar);
+		getContentPane().add(btnConfiguracoes);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.setBounds(340, 8, 70, 23);
 		btnSair.setBackground(new Color(255, 198, 198));
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
