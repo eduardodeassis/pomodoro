@@ -25,6 +25,7 @@ replay_pid*
 
 # Arquivos do windows
 desktop.ini
+Thumbs.db
 
 #Remover adição da pasta bin
 bin/
