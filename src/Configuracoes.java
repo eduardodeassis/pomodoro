@@ -11,6 +11,8 @@ import javax.swing.SwingConstants;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Configuracoes extends JFrame {
 
@@ -39,7 +41,7 @@ public class Configuracoes extends JFrame {
 	 * Create the frame.
 	 */
 	public Configuracoes() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 254, 208);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -88,6 +90,11 @@ public class Configuracoes extends JFrame {
 		panel_1.add(btnSalvar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnCancelar.setBounds(114, 11, 89, 23);
 		panel_1.add(btnCancelar);
 	}
